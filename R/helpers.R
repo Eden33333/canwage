@@ -1,5 +1,5 @@
 # Helperl functions that helps the API wrapper get_wage function
-
+library("httr2")
 valid_api_key <- function(api_key){
   !is.null(api_key) && is.character(api_key) && nchar(api_key) == 36
 }

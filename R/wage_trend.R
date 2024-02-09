@@ -8,8 +8,6 @@
 #' @param positions a value or vector about job type
 #' @return One or two plot
 #' @export
-#' @examples
-#' trend(get_wage(c("2012","2013","2014","2015","2016","2019","2020","2021","2022","2023")),type="overall")
 
 # check package "tidyverse","patchwork"
 if (!requireNamespace("tidyverse", quietly = TRUE)) {
@@ -49,9 +47,11 @@ trend<-function(records,type,filte=100000000,provs=c("Ontario","British Columbia
       #make plot more clear
       theme_minimal()
     #combine them
+
     combined_plot <- grid.arrange(boxplot, lineplot, ncol = 2)
-    #ggsave("overall_wage_trend.png", plot = combined_plot, width = 8, height = 6, dpi = 300)
+    # ggsave("overall_wage_trend.png", plot = combined_plot, width = 8, height = 6, dpi = 300)
     plot(combined_plot)}
+
   #customerized plot
   else if (type=="specific"){
 
@@ -68,16 +68,15 @@ trend<-function(records,type,filte=100000000,provs=c("Ontario","British Columbia
       geom_point(aes(x=year,y=mean_average,col=occupation))+
       facet_grid(~province)
 
-    # point<-records%>%
-    #   #choose the province and type of jobs selected
-    #   filter(province %in% provs ,occupation %in% positions, median_wage<filte) %>%
-    #   ggplot() +
-    #   #use col to distinguish type of job and facet to province
-    #   geom_point(aes(x=year,y=median_wage,col=occupation))+
-    #   facet_grid(~province)+
-    #   theme_minimal()
+    point<-records%>%
+      #choose the province and type of jobs selected
+      filter(province %in% provs ,occupation %in% positions, median_wage<filte) %>%
+      ggplot() +
+      #use col to distinguish type of job and facet to province
+      geom_point(aes(x=year,y=median_wage,col=occupation))+
+      facet_grid(~province)
 
-    #ggsave("special_wage_trend.png", plot = line, width = 8, height = 6, dpi = 300)
+    # ggsave("special_wage_trend.png", plot = line, width = 30, height = 16, dpi = 800)
     plot(line)
   }
 

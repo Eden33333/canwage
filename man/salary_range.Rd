@@ -22,14 +22,3 @@ This function calculates the salary range for a specific job and province in a g
 It filters the dataset based on the provided job title and province,
 then computes the average of the low and high wages to determine the salary range.
 }
-\examples{
-# Calculate salary range for the job "Software Engineers" in the province "Ontario"
-software_dev_salary_range <- salary_range(dataset = your_dataset, job = "Software Engineers", prov = "Ontario")
-
-# Calculate salary range for the job "data scientists" in the province "British Columbia"
-data_analyst_salary_range <- salary_range(dataset = your_dataset, job = "data scientists", prov = "British Columbia")
-
-# Handle no data found
-no_data_range <- salary_range(dataset = your_dataset, job = "nonexistent job", prov = "Nonexistent Province")
-# This will return NULL as no data is found for the specified job and province.
-}

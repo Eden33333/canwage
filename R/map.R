@@ -1,22 +1,22 @@
 #' Create an Interactive Map of Median Salaries for a Specific Job Across Canada
-#' 
-#' This function generates an interactive map showcasing the median salaries for a specific job across Canadian provinces. 
+#'
+#' This function generates an interactive map showcasing the median salaries for a specific job across Canadian provinces.
 #' The map can handle both single-year and multi-year datasets, providing an insightful visualization of salary variations.
 #'
 #' @param dataset A tibble or data frame containing the wage dataset.
 #' @param job A character string representing the job title for which to visualize the median salary on the map.
 #'
-#' @return An interactive map created using the Plotly library, allowing users to explore median salaries 
+#' @return An interactive map created using the Plotly library, allowing users to explore median salaries
 #'         for the specified job across different Canadian provinces and years.
-#'         
-#' @export
-#'        
-#' @examples
-#' # Generate an interactive map for the job "Software Engineers" using a single-year dataset
-#' single_year_map <- map(dataset = your_dataset, job = "Software Engineers")
 #'
-#' # Generate an interactive map for the job "Data Scientists" using a multi-year dataset
-#' multi_year_map <- map(dataset = your_dataset_multi_year, job = "Data Scientists")
+#' @export
+#'
+# @examples
+# # Generate an interactive map for the job "Software Engineers" using a single-year dataset
+# single_year_map <- map(dataset = your_dataset, job = "Software Engineers")
+#'
+# # Generate an interactive map for the job "Data Scientists" using a multi-year dataset
+# multi_year_map <- map(dataset = your_dataset_multi_year, job = "Data Scientists")
 
 map <- function(dataset, job){
   if(!("sf" %in% utils::installed.packages())) {
@@ -41,7 +41,7 @@ map <- function(dataset, job){
       ggplot2::geom_sf(ggplot2::aes(fill = median_wage, text = paste("Province: ", province)),
                        color = "gray40") +
       ggplot2::geom_sf_text(ggplot2::aes(label = postal), size = 2) +
-      ggplot2::scale_fill_gradient("Median salary", labels = scales::number, 
+      ggplot2::scale_fill_gradient("Median salary", labels = scales::number,
                                    low = "#fee8c8", high = "#e34a33") +
       ggplot2::theme_void() +
       ggplot2::theme(panel.grid = ggplot2::element_blank(),
@@ -68,7 +68,7 @@ map <- function(dataset, job){
       dplyr::rename(province = gn_name) |>
       dplyr::select(province, geometry) |>
       dplyr::left_join(map_data, by = "province") |>
-      plotly::plot_ly(stroke = I("black"), split = ~province, color = ~median_wage, 
+      plotly::plot_ly(stroke = I("black"), split = ~province, color = ~median_wage,
                       colors = viridis::inferno(99),
                       text = ~text, showlegend = FALSE, hoveron = "fills", frame = ~year) |>
       plotly::colorbar(title = "Median salary") |>

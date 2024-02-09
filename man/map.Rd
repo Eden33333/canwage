@@ -19,10 +19,3 @@ for the specified job across different Canadian provinces and years.
 This function generates an interactive map showcasing the median salaries for a specific job across Canadian provinces.
 The map can handle both single-year and multi-year datasets, providing an insightful visualization of salary variations.
 }
-\examples{
-# Generate an interactive map for the job "Software Engineers" using a single-year dataset
-single_year_map <- map(dataset = your_dataset, job = "Software Engineers")
-
-# Generate an interactive map for the job "Data Scientists" using a multi-year dataset
-multi_year_map <- map(dataset = your_dataset_multi_year, job = "Data Scientists")
-}

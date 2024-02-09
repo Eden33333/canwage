@@ -18,16 +18,3 @@ A character vector containing unique occupations that match the provided keyword
 This function takes a wage dataset and a keyword as input and returns a list of unique occupations that match the provided keyword.
 The comparison is case-insensitive.
 }
-\examples{
-# List occupations containing the keyword "engineer"
-\dontrun{
-engineer_occupations <- list_occupations(dataset = your_dataset, str = "engineer")
-
-# List occupations containing the keyword "data"
-data_occupations <- list_occupations(dataset = your_dataset, str = "data")
-
-# Handle no matches
-no_matches <- list_occupations(dataset = your_dataset, str = "nonexistent")
-# This will return a message indicating that there are no matching occupations.
-}
-}

@@ -18,21 +18,21 @@
 #'
 #' @export
 #'
-#' @examples
-#' # Retrieve wage data for a single year
-#' \dontrun{
-#' single_year_data <- get_wage(dataset = "2023", api_key = "your_api_key")
-#'
-#' # Retrieve wage data for multiple years
-#' multiple_years_data <- get_wage(dataset = c("2020", "2021", "2022"), api_key = "your_api_key")
-#'
-#' # Use the default API key from the environment variable
-#' default_key_data <- get_wage(dataset = "2023")
-#'
-#' # Handle API key error
-#' invalid_key_data <- get_wage(dataset = "2023", api_key = "invalid_key")
-#' # This will stop with an error message about the invalid API key.
-#' }
+#@examples
+# # Retrieve wage data for a single year
+# \dontrun{
+# single_year_data <- get_wage(dataset = "2023", api_key = "your_api_key")
+#
+# # Retrieve wage data for multiple years
+# multiple_years_data <- get_wage(dataset = c("2020", "2021", "2022"), api_key = "your_api_key")
+#
+# # Use the default API key from the environment variable
+# default_key_data <- get_wage(dataset = "2023")
+#
+# # Handle API key error
+# invalid_key_data <- get_wage(dataset = "2023", api_key = "invalid_key")
+# # This will stop with an error message about the invalid API key.
+# }
 
 get_wage <- function(dataset, api_key=Sys.getenv("CKAN_API_KEY")){
   if(!valid_api_key(api_key)){
